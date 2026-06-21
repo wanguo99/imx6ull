@@ -13,6 +13,3 @@
 [submodule "lpf"]
 	path = lpf
 	url = git@github.com:wanguo99/lpf.git
-[submodule "lpf"]
-	path = lpf
-	url = /home/wanguo/imx6ull/lpf
