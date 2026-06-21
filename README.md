@@ -10,6 +10,34 @@ cd imx6ull
 git submodule update --init --recursive
 ```
 
+## Update Submodules
+
+If `.gitmodules` was changed, sync the configured submodule URLs first:
+
+```bash
+git submodule sync --recursive
+```
+
+Update all submodules to the commits recorded by the superproject:
+
+```bash
+git submodule update --init --recursive
+```
+
+Update all submodules to the latest commits on their tracked remote branches:
+
+```bash
+git submodule update --init --remote --recursive
+```
+
+After a remote update, review and commit the updated submodule pointers from the repository root:
+
+```bash
+git status
+git add .
+git commit -m "chore: update submodules"
+```
+
 ## Contents
 
 - `buildroot/` Buildroot source tree
