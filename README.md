@@ -44,15 +44,29 @@ git submodule update --init --recursive
 git submodule update --init -- linux-7.0
 ```
 
+### 跟踪 master 分支
+
+本仓库的子模块配置为跟踪各自远端的 `master` 分支。配置命令如下：
+
+```bash
+git submodule set-branch --branch master -- buildroot
+git submodule set-branch --branch master -- br2-external
+git submodule set-branch --branch master -- linux-7.0
+git submodule set-branch --branch master -- uboot-2024.10
+git submodule set-branch --branch master -- lpf
+```
+
+这些命令会在 `.gitmodules` 中写入 `branch = master`。注意：主仓库仍然记录每个子模块的具体提交；`branch = master` 只决定 `git submodule update --remote` 从哪个远端分支取最新提交。
+
 ### 拉取子模块远端最新提交
 
-将所有子模块更新到各自远端分支的最新提交：
+将所有子模块更新到各自远端 `master` 分支的最新提交：
 
 ```bash
 git submodule update --init --remote --recursive
 ```
 
-只更新某一个子模块到远端最新提交：
+只更新某一个子模块到远端 `master` 最新提交：
 
 ```bash
 git submodule update --init --remote -- linux-7.0
