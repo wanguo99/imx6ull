@@ -10,6 +10,27 @@ cd imx6ull
 git submodule update --init --recursive
 ```
 
+如果网络较慢，可以单独初始化较大的子模块，并使用浅克隆和部分克隆减少下载量：
+
+```bash
+git submodule update --init --depth 1 --filter=blob:none -- linux-7.0
+git submodule update --init --depth 1 --filter=blob:none -- uboot-2024.10
+```
+
+如果中断导致子模块留下半截目录，先清理对应路径后重试：
+
+```bash
+rm -rf linux-7.0 .git/modules/linux-7.0
+git submodule update --init --depth 1 --filter=blob:none -- linux-7.0
+```
+
+检查子模块初始化状态：
+
+```bash
+git submodule status
+git status --short
+```
+
 ## 更新子模块
 
 如果修改了 `.gitmodules`，请先同步子模块 URL 配置：
@@ -41,8 +62,8 @@ git commit -m "chore: update submodules"
 ## 目录说明
 
 - `buildroot/` Buildroot 源码树
-- `buildroot-external-tree/` 面向板级集成的 Buildroot 外部层
-- `linux-6.12/` Linux 内核源码树
-- `u-boot-v2024.10/` U-Boot 源码树
+- `br2-external/` 面向板级集成的 Buildroot 外部层
+- `linux-7.0/` Linux 内核源码树
+- `uboot-2024.10/` U-Boot 源码树
 - `lpf/` 项目自定义代码
 - `docs/` 板卡参考手册、数据手册和原理图 PDF
