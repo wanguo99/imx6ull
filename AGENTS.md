@@ -8,9 +8,9 @@ This repository is a BSP workspace that aggregates the main source trees as Git 
 - `linux-7.0/` for the Linux kernel source tree
 - `uboot-2024.10/` for the U-Boot source tree
 - `lpf/` for project-specific LPF code
-- `docs/` for board reference manuals, datasheets, schematics, and related documents
+- `docs/<board>/` for board-specific reference manuals, datasheets, schematics, and related documents
 
-Do not mix generated build outputs into the repository root. Put new root-level documentation in `README.md` or `docs/` unless a tool requires a specific file at the root.
+Do not mix generated build outputs into the repository root. Put new root-level documentation in `README.md`; put board-specific documents under `docs/<board>/` unless a tool requires a specific file at the root.
 
 ## Build, Test, and Development Commands
 No build system or test runner is configured yet. Until one is added, use standard Git commands for local workflow:

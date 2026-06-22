@@ -160,4 +160,4 @@ git submodule update --init -- linux-7.0
 - `linux-7.0/` Linux 内核源码树
 - `uboot-2024.10/` U-Boot 源码树
 - `lpf/` 项目自定义代码
-- `docs/` 板卡参考手册、数据手册和原理图 PDF
+- `docs/<board>/` 按板卡归档参考手册、数据手册、原理图和相关 PDF，例如 `docs/imx6ull/`
