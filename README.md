@@ -1,4 +1,4 @@
-# bsp
+# workspace
 
 嵌入式 Linux BSP 开发工作区聚合仓库。这个仓库使用 Git 子模块统一管理 Buildroot、Buildroot 外部层、Linux、U-Boot、LPF 和板级文档。
 
@@ -7,8 +7,8 @@
 ### 克隆与初始化
 
 ```bash
-git clone git@github.com:linux-bsp/bsp.git
-cd bsp
+git clone git@github.com:linux-bsp/workspace.git
+cd workspace
 git submodule update --init --recursive
 ```
 
