@@ -1,14 +1,16 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is currently empty aside from Git metadata. Keep the root clean and introduce a predictable layout as code is added:
+This repository is a BSP workspace that aggregates the main source trees as Git submodules. Keep the repository root focused on workspace metadata, documentation, and submodule entries.
 
-- `src/` for application or library code
-- `tests/` for automated tests
-- `docs/` for design notes or usage documentation
-- `assets/` for static files such as sample data or images
+- `buildroot/` for the Buildroot source tree
+- `br2-external/` for board-specific Buildroot external configuration
+- `linux-7.0/` for the Linux kernel source tree
+- `uboot-2024.10/` for the U-Boot source tree
+- `lpf/` for project-specific LPF code
+- `docs/` for board reference manuals, datasheets, schematics, and related documents
 
-Use small, focused modules and group related files by feature or subsystem. Avoid mixing source files, scripts, and documentation at the repository root.
+Do not mix generated build outputs into the repository root. Put new root-level documentation in `README.md` or `docs/` unless a tool requires a specific file at the root.
 
 ## Build, Test, and Development Commands
 No build system or test runner is configured yet. Until one is added, use standard Git commands for local workflow:
