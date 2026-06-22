@@ -15,8 +15,10 @@ git submodule update --init --recursive
 如果网络较慢，可以单独初始化较大的子模块，并使用浅克隆和部分克隆减少下载量：
 
 ```bash
-git submodule update --init --depth 1 --filter=blob:none -- linux-7.0
-git submodule update --init --depth 1 --filter=blob:none -- uboot-2024.10
+git submodule update --init --depth 1 --filter=blob:none -- linux/linux-7.0
+git submodule update --init --depth 1 --filter=blob:none -- linux/ti-linux-kernel-6.18.13
+git submodule update --init --depth 1 --filter=blob:none -- uboot/uboot-2024.10
+git submodule update --init --depth 1 --filter=blob:none -- uboot/ti-u-boot-2025.10
 ```
 
 ### 查看状态
@@ -41,7 +43,7 @@ git submodule update --init --recursive
 只更新某一个子模块：
 
 ```bash
-git submodule update --init -- linux-7.0
+git submodule update --init -- linux/linux-7.0
 ```
 
 ### 跟踪 master 分支
@@ -51,8 +53,10 @@ git submodule update --init -- linux-7.0
 ```bash
 git submodule set-branch --branch master -- buildroot
 git submodule set-branch --branch master -- br2-external
-git submodule set-branch --branch master -- linux-7.0
-git submodule set-branch --branch master -- uboot-2024.10
+git submodule set-branch --branch master -- linux/linux-7.0
+git submodule set-branch --branch master -- linux/ti-linux-kernel-6.18.13
+git submodule set-branch --branch master -- uboot/uboot-2024.10
+git submodule set-branch --branch master -- uboot/ti-u-boot-2025.10
 git submodule set-branch --branch master -- lpf
 ```
 
@@ -69,14 +73,14 @@ git submodule update --init --remote --recursive
 只更新某一个子模块到远端 `master` 最新提交：
 
 ```bash
-git submodule update --init --remote -- linux-7.0
+git submodule update --init --remote -- linux/linux-7.0
 ```
 
 更新后需要在主仓库提交新的子模块指针：
 
 ```bash
 git status
-git add .gitmodules buildroot br2-external linux-7.0 uboot-2024.10 lpf
+git add .gitmodules buildroot br2-external linux/linux-7.0 linux/ti-linux-kernel-6.18.13 uboot/uboot-2024.10 uboot/ti-u-boot-2025.10 lpf
 git commit -m "chore: update submodules"
 ```
 
@@ -92,8 +96,8 @@ git submodule update --init --recursive
 只同步某一个子模块：
 
 ```bash
-git submodule sync -- linux-7.0
-git submodule update --init -- linux-7.0
+git submodule sync -- linux/linux-7.0
+git submodule update --init -- linux/linux-7.0
 ```
 
 ### 添加子模块
@@ -124,7 +128,7 @@ git commit -m "chore: remove example submodule"
 子模块本身也是 Git 仓库，可以进入目录后正常执行 Git 命令：
 
 ```bash
-cd linux-7.0
+cd linux/linux-7.0
 git status
 git branch
 git log --oneline -5
@@ -143,21 +147,28 @@ git submodule foreach 'git log --oneline -1'
 如果中断导致子模块留下半截目录，先清理对应路径后重试：
 
 ```bash
-rm -rf linux-7.0 .git/modules/linux-7.0
-git submodule update --init --depth 1 --filter=blob:none -- linux-7.0
+rm -rf linux/linux-7.0 .git/modules/linux-7.0
+git submodule update --init --depth 1 --filter=blob:none -- linux/linux-7.0
+```
+
+如果子模块名称和路径都带有目录层级，例如 `linux/ti-linux-kernel-6.18.13`，`.git/modules` 下的清理路径也需要保留同样的层级：
+
+```bash
+rm -rf linux/ti-linux-kernel-6.18.13 .git/modules/linux/ti-linux-kernel-6.18.13
+git submodule update --init --depth 1 --filter=blob:none -- linux/ti-linux-kernel-6.18.13
 ```
 
 如果只是工作区缺失，但 `.gitmodules` 和索引中已经有记录，直接重新初始化：
 
 ```bash
-git submodule update --init -- linux-7.0
+git submodule update --init -- linux/linux-7.0
 ```
 
 ## 目录说明
 
 - `buildroot/` Buildroot 源码树
 - `br2-external/` 面向板级集成的 Buildroot 外部层
-- `linux-7.0/` Linux 内核源码树
-- `uboot-2024.10/` U-Boot 源码树
+- `linux/` Linux 内核源码树目录，按版本放置，例如 `linux/linux-7.0/` 和 `linux/ti-linux-kernel-6.18.13/`
+- `uboot/` U-Boot 源码树目录，按版本放置，例如 `uboot/uboot-2024.10/` 和 `uboot/ti-u-boot-2025.10/`
 - `lpf/` 项目自定义代码
 - `docs/<board>/` 按板卡归档参考手册、数据手册、原理图和相关 PDF，例如 `docs/imx6ull/`
