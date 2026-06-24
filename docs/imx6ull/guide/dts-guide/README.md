@@ -4,9 +4,10 @@
 
 当前主要参考文件：
 
-- 原理图：`docs/imx6ull/Schematic.pdf`
-- i.MX6ULL 参考手册：`docs/imx6ull/IMX6ULL参考手册.pdf`
-- i.MX6ULL 数据手册：`docs/imx6ull/IMX6ULL数据手册(工业级).pdf`、`docs/imx6ull/IMX6ULL数据手册(商用级).pdf`
+- 原理图：`docs/imx6ull/schematics/Schematic.pdf`
+- i.MX6ULL 参考手册：`docs/imx6ull/reference-manuals/IMX6ULL参考手册.pdf`
+- i.MX6ULL 数据手册：`docs/imx6ull/datasheets/IMX6ULL数据手册(工业级).pdf`、`docs/imx6ull/datasheets/IMX6ULL数据手册(商用级).pdf`
+- i.MX6ULL 勘误手册：`docs/imx6ull/errata/IMX6ULL勘误手册.pdf`
 - 当前板级 DTS：`linux/linux-7.0/arch/arm/boot/dts/nxp/imx/imx6ull-atk-dl6y2c.dts`
 - i.MX6ULL SoC 公共 DTSI：`linux/linux-7.0/arch/arm/boot/dts/nxp/imx/imx6ull.dtsi`
 - i.MX6UL SoC 公共 DTSI：`linux/linux-7.0/arch/arm/boot/dts/nxp/imx/imx6ul.dtsi`
