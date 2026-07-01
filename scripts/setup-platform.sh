@@ -4,7 +4,7 @@ set -euo pipefail
 COMMON_SUBMODULES=(
     buildroot
     br2-external
-    lpf
+    paf
 )
 
 usage() {
@@ -14,8 +14,8 @@ Usage: scripts/setup-platform.sh [options] <platform>
 Set up a target platform workspace by initializing or updating only the required submodules.
 
 Platforms:
-  imx6ull        buildroot, br2-external, lpf, linux/linux-7.0, uboot/uboot-2024.10
-  ti            buildroot, br2-external, lpf, linux/ti-linux-kernel-6.18.13, uboot/ti-u-boot-2025.10
+  imx6ull        buildroot, br2-external, paf, linux/linux-7.0, uboot/uboot-2024.10
+  ti            buildroot, br2-external, paf, linux/ti-linux-kernel-6.18.13, uboot/ti-u-boot-2025.10
   all           all submodules listed in .gitmodules
 
 Options:
@@ -79,14 +79,14 @@ list_platforms() {
 imx6ull:
   buildroot
   br2-external
-  lpf
+  paf
   linux/linux-7.0
   uboot/uboot-2024.10
 
 ti:
   buildroot
   br2-external
-  lpf
+  paf
   linux/ti-linux-kernel-6.18.13
   uboot/ti-u-boot-2025.10
 

@@ -6,9 +6,9 @@
 	path = br2-external
 	url = git@github.com:linux-bsp/br2-external.git
 	branch = master
-[submodule "lpf"]
-	path = lpf
-	url = git@github.com:linux-bsp/lpf.git
+[submodule "paf"]
+	path = paf
+	url = git@github.com:linux-bsp/paf.git
 	branch = master
 [submodule "uboot-2024.10"]
 	path = uboot/uboot-2024.10
